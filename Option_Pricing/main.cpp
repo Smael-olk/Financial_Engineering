@@ -89,11 +89,12 @@ class mcPricer  : public OptionPricer {
 };
 
 int main() {
-    OptionData data{1.00, 1.05, 0.025, 0.02, 0.21, 1.0 / 3.0};
+    OptionData data_FE{1.00, 1.05, 0.025, 0.02, 0.21, 1.0 / 3.0};
+    OptionData data_MSTR{1.00, 1.05, 0.025, 0.02, 0.21, 1.0 / 3.0};
 
-    blsPricer bs(data);
-    crrPricer crr(data, 50);
-    mcPricer mc(data, 100000);
+    blsPricer bs(data_FE);
+    crrPricer crr(data_FE, 50);
+    mcPricer mc(data_FE, 100000);
 
     std::cout << "Black Scholes price: " << bs.price() << "\n";
     std::cout << "CRR Tree price:      " << crr.price() << "\n";
